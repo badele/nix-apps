@@ -8,12 +8,31 @@ or
 nix develop --no-write-lock-file github:badele/nix-apps#<appname> -c $SHELL # remote
 ```
 
-## Applications
+## Packages
 
 APP Name | Description
 --- | ---
 [cc2531](apps/2531) | zigbee CC2531 Texas Instruments USB stick flashing tool
 [sdr](apps/sdr) | Software Defined Radio(SDR)
+
+## Applications
+
+### [cc2531](apps/2531)
+
+- cc-tool
+- zigbee2mqtt
+
+### [sdr](apps/sdr)
+
+- dump1090
+- gqrx
+- sdrpp
+- sdrangel
+- gnuradio
+- urh
+- inspectrum
+- gnuradio
+- audacity
 
 ## Nix installation
 

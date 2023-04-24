@@ -1,25 +1,10 @@
 { pkgs ? import <nixpkgs> { }
 }:
 
-
-# pkgs.mkShell {
-#   buildInputs = with pkgs; [
-#     urh
-#     rtl-sdr
-#     rtl_433
-
-#     usbutils
-#     strace
-#   ];
-
-#   shellHook = ''
-#     lsusb
-#   '';
-# }
-
 let
   device = "RTL2838";
 in
+
 pkgs.stdenv.mkDerivation {
   name = "sdr";
 
@@ -29,11 +14,23 @@ pkgs.stdenv.mkDerivation {
     rtl-sdr
     dump1090
 
-    # Signal analyzer
-    gnuradio
+    # Realtime SDR
     gqrx
+    sdrpp
+    sdrangel
+
+    # GNU Radio
+    gnuradio
+    gnuradio3_8Packages.ais
+    gnuradio3_8Packages.rds
+    gnuradio3_8Packages.python
+    gnuradio3_8Packages.osmosdr
+    gnuradio3_8Packages.gnuradio
+
+    # Signal analyzer
     urh
     inspectrum
+    gnuradio
     audacity
 
     usbutils
@@ -45,11 +42,17 @@ pkgs.stdenv.mkDerivation {
     sudo chmod 666 $(lsusb  | grep -i ${device} | awk '{print "/dev/bus/usb/" $2 "/" $4}' | sed 's/\://g')
     
     tools="🔨 Sample commands:
-      urh
-      gqrx
-      gnuradio
-      audacity      
-      inspectrum
+    dump1090
+
+    gqrx
+    sdrpp
+    sdrangel
+    gnuradio
+
+    urh
+    inspectrum
+    gnuradio
+    audacity
     "
 
     echo "$tools"
