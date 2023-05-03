@@ -1,4 +1,7 @@
 { pkgs ? import <nixpkgs> { }
+, nur ? import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+    inherit pkgs;
+  }
 }:
 
 let
@@ -9,31 +12,59 @@ pkgs.stdenv.mkDerivation {
   name = "sdr";
 
   buildInputs = with pkgs; [
-    # Signal receiver
+    # My NUR contrib
+    nur.repos.badele.rtl-gopow
+    nur.repos.badele.trunk-recorder
+    nur.repos.badele.rtlsdr-airband
+    nur.repos.badele.tetrapol-kit
+
+    # SDR-RTL
+    dump1090
+    kalibrate-rtl # kal
     rtl_433
     rtl-sdr
-    dump1090
+    soapyrtlsdr
 
-    # Realtime SDR
+    # Realtime SDR/DAB+
+    cubicsdr
     gqrx
-    sdrpp
+    qradiolink
     sdrangel
+    sdrpp
+    sigdigger
+
+    # DAB/DAB+
+    dablin
+    dabtools
+    guglielmo
+    welle-io
 
     # GNU Radio
-    gnuradio
-    gnuradio3_8Packages.ais
-    gnuradio3_8Packages.rds
-    gnuradio3_8Packages.python
-    gnuradio3_8Packages.osmosdr
-    gnuradio3_8Packages.gnuradio
+    (gnuradio3_8.override {
+      extraPackages = with gnuradio3_8Packages; [
+        ais
+        grnet
+        limesdr
+        osmosdr
+        rds
+        soapyrtlsdr
+      ];
+    })
+    librtlsdr
+    xorg.libxcb
 
     # Signal analyzer
-    urh
-    inspectrum
-    gnuradio
     audacity
+    inspectrum
+    urh
 
+    # CW/Morse
+    aldo
+    fldigi
+
+    # Misc
     usbutils
+    xterm
   ];
 
   shellHook = ''
@@ -41,20 +72,7 @@ pkgs.stdenv.mkDerivation {
     sudo rmmod -f dvb_usb_rtl28xxu dvb_usb_v2 rtl2832 > /dev/null 2>&1
     sudo chmod 666 $(lsusb  | grep -i ${device} | awk '{print "/dev/bus/usb/" $2 "/" $4}' | sed 's/\://g')
     
-    tools="🔨 Sample commands:
-    dump1090
-
-    gqrx
-    sdrpp
-    sdrangel
-    gnuradio
-
-    urh
-    inspectrum
-    gnuradio
-    audacity
-    "
-
-    echo "$tools"
+    echo "🔨 Sample commands:"
+    echo "See apps/sdr/shell.nix for programs list" 
   '';
 }
