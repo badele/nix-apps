@@ -6,12 +6,8 @@
 
 let
   device = "RTL2838";
-in
 
-pkgs.stdenv.mkDerivation {
-  name = "sdr";
-
-  buildInputs = with pkgs; [
+  commonsPkgs = with pkgs; [
     # My NUR contrib
     nur.repos.badele.rtl-gopow
     nur.repos.badele.trunk-recorder
@@ -37,7 +33,6 @@ pkgs.stdenv.mkDerivation {
     dablin
     dabtools
     guglielmo
-    welle-io
 
     # GNU Radio
     (gnuradio3_8.override {
@@ -66,6 +61,17 @@ pkgs.stdenv.mkDerivation {
     usbutils
     xterm
   ];
+in
+
+pkgs.stdenv.mkDerivation {
+  name = "sdr";
+
+  buildInputs = commonsPkgs
+    ++ pkgs.lib.optionals (pkgs.stdenv.isi686 || pkgs.stdenv.isx86_64) [
+    # DAB/DAB+
+    pkgs.welle-io
+  ]
+  ;
 
   shellHook = ''
     # Fix modules
