@@ -7,6 +7,11 @@
 let
   device = "RTL2838";
 
+  pythonEnv = pkgs.python310.withPackages
+    (p: with p; [
+      six # Used by tetrapol-kit/demod
+    ]);
+
   commonsPkgs = with pkgs; [
     # My NUR contrib
     nur.repos.badele.rtl-gopow
@@ -35,16 +40,12 @@ let
     guglielmo
 
     # GNU Radio
-    (gnuradio3_8.override {
-      extraPackages = with gnuradio3_8Packages; [
-        ais
-        grnet
-        limesdr
-        osmosdr
-        rds
-        soapyrtlsdr
-      ];
-    })
+    gnuradio3_8
+    gnuradio3_8Packages.ais
+    gnuradio3_8Packages.grnet
+    gnuradio3_8Packages.limesdr
+    gnuradio3_8Packages.osmosdr
+    gnuradio3_8Packages.rds
     librtlsdr
     xorg.libxcb
 
@@ -60,6 +61,9 @@ let
     # Misc
     usbutils
     xterm
+
+    # Required by some packages
+    pythonEnv
   ];
 in
 
@@ -70,8 +74,9 @@ pkgs.stdenv.mkDerivation {
     ++ pkgs.lib.optionals (pkgs.stdenv.isi686 || pkgs.stdenv.isx86_64) [
     # DAB/DAB+
     pkgs.welle-io
-  ]
-  ;
+  ];
+
+
 
   shellHook = ''
     # Fix modules
