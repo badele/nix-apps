@@ -18,6 +18,7 @@ let
     nur.repos.badele.trunk-recorder
     nur.repos.badele.rtlsdr-airband
     nur.repos.badele.tetrapol-kit
+    nur.repos.badele.sdrpp
 
     # SDR-RTL
     dump1090
@@ -31,7 +32,6 @@ let
     gqrx
     qradiolink
     sdrangel
-    sdrpp
     sigdigger
 
     # DAB/DAB+
@@ -40,12 +40,15 @@ let
     guglielmo
 
     # GNU Radio
-    gnuradio3_8
-    gnuradio3_8Packages.ais
-    gnuradio3_8Packages.grnet
-    gnuradio3_8Packages.limesdr
-    gnuradio3_8Packages.osmosdr
-    gnuradio3_8Packages.rds
+    (gnuradio3_8.override {
+      extraPackages = with gnuradio3_8Packages; [
+        ais
+        rds
+        grnet
+        osmosdr
+        limesdr
+      ];
+    })
     librtlsdr
     xorg.libxcb
 
@@ -57,6 +60,7 @@ let
     # CW/Morse
     aldo
     fldigi
+    multimon-ng
 
     # Misc
     usbutils
