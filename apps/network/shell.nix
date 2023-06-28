@@ -43,11 +43,13 @@ let
     speedtest-cli
 
     # Terminal sniffing
+    bpftools
     ngrep
     tcpdump
     tcpflow
-    wireshark
     tcpreplay
+    tshark
+    wireshark
 
     # Tools
     evillimiter
