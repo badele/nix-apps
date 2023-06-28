@@ -17,8 +17,9 @@ nix develop --impure  --no-write-lock-file github:badele/nix-apps#<appname> -c $
 APP Name | Description
 --- | ---
 [cc2531](apps/2531) | zigbee CC2531 Texas Instruments USB stick flashing tool
-[sdr](apps/sdr) | Software Defined Radio(SDR)
 [network](apps/network) | Network monitoring and sniffing tools
+[sdr](apps/sdr) | Software Defined Radio(SDR)
+[system](apps/system) | System and performance tools
 
 ## Nix installation
 
