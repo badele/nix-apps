@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# Inputs
+###############################################################################
+
+echo "https://github.com/badele/nix-apps"
+echo "           |         |       |"
+echo "         REMOTE    OWNER REPOSITORY"
+echo ""
+
+echo -n "Remote : "
+read -r REMOTE
+
+echo -n "Owner : "
+read -r OWNER
+
+echo -n "Repository : "
+read -r REPOSITORY
+
+###############################################################################
+# Replacements
+###############################################################################
+
+# cog.toml
+sed -i "s/<REMOTE>/${REMOTE}/g" cog.toml
+sed -i "s/<OWNER>/${OWNER}/g" cog.toml
+sed -i "s/<REPOSITORY>/${REPOSITORY}/g" cog.toml
+
+# flake.nix
+sed -i "s/<REPOSITORY>/${REPOSITORY}/g" flake.nix
+
+# Add template file to new project
+git init && git add -A
+
+rm init_project

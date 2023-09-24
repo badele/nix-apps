@@ -1,6 +1,23 @@
 # nix-apps
 
-## Usage
+<!--toc:start-->
+- [nix-apps](#nix-apps)
+  - [Projects](#projects)
+  - [Apps](#apps)
+    - [Packages](#packages)
+  - [Nix installation](#nix-installation)
+<!--toc:end-->
+
+## Projects
+
+```shell
+nix flake new -t "github:badele/nix-apps/master#minimal" new-project-name
+cd new-project-name
+sh init_project
+nix develop
+```
+
+## Apps
 
 For using some apps packages
 
@@ -12,7 +29,7 @@ nix develop --impure  --no-write-lock-file github:badele/nix-apps#<appname> -c $
 
 **Note:** `--impur` for **NUR** package
 
-## Packages
+### Packages
 
 APP Name | Description
 --- | ---
