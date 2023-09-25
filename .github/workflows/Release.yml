@@ -7,20 +7,25 @@ on:
 
 jobs:
   release:
-    name: Perform release
+    name: Semver release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git config --global user.email github-actions@github.com
+          git config --global user.name github-actions
 
       - name: Cocogitto release
         id: release
         uses: oknozor/cocogitto-action@v3.4
         with:
           release: true
-          git-user: "Bruno Adelé"
-          git-user-email: "brunoadele@gmail.com"
+          git-user: 'github-actions'
+          git-user-email: 'github-actions@github.com'
 
       - name: Print version
         run: "echo '${{ steps.release.outputs.version }}'"
