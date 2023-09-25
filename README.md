@@ -10,9 +10,11 @@
 
 ## Projects
 
+New project creation
+
 ```shell
-nix flake new -t "github:badele/nix-apps/master#minimal" new-project-name
-cd new-project-name
+nix flake new -t "github:badele/nix-apps/master#minimal" your-project-name
+cd your-project-name
 sh init_project
 nix develop
 ```

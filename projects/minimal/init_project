@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+replace_content() {
+sed -i "s/{{REMOTE}}/${REMOTE}/g" $1
+sed -i "s/{{OWNER}}/${OWNER}/g" $1
+sed -i "s/{{REPOSITORY}}/${REPOSITORY}/g" $1
+}
+
 ###############################################################################
 # Inputs
 ###############################################################################
@@ -21,16 +27,12 @@ read -r REPOSITORY
 ###############################################################################
 # Replacements
 ###############################################################################
+replace_content cog.toml
+replace_content README.md
+replace_content flake.nix
 
-# cog.toml
-sed -i "s/<REMOTE>/${REMOTE}/g" cog.toml
-sed -i "s/<OWNER>/${OWNER}/g" cog.toml
-sed -i "s/<REPOSITORY>/${REPOSITORY}/g" cog.toml
-
-# flake.nix
-sed -i "s/<REPOSITORY>/${REPOSITORY}/g" flake.nix
+rm init_project
 
 # Add template file to new project
 git init && git add -A
 
-rm init_project

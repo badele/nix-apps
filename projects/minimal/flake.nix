@@ -21,7 +21,7 @@
               hello
             ];
             shellHook = ''
-              export PROJ="<REPOSITORY>"
+              export PROJ="{{REPOSITORY}}"
 
               echo ""
               echo "⭐ Welcome to the $PROJ project ⭐"
