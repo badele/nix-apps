@@ -1,19 +1,16 @@
 # {{REPOSITORY}}
 
-## {{REPOSITORY}} project configuration
+## TODO {{REPOSITORY}} project initialisation
 
-Allowing **github action** (release and changelog push)
-
-Goto to [Actions settings](
+Enable **Read and write permissions** on the [Github action workflow permission](
 <https://{{REMOTE}}/{{OWNER}}/{{REPOSITORY}}/settings/actions>)
+(for pushing the release and changelog)
 
-## Included tools
-
-This template includes this tools
+## Included with this project
 
 - nix/flake - reproducible, declarative and reliable developpement systems
 - pre-commit
-- cocogitto - auto versionning and conventional commits
+- cocogitto - conventional commits and auto versioning
 
 ## Git workflow
 
@@ -22,5 +19,5 @@ This template includes this tools
   - pre-commit hook
     - markdownlint - markdown linter
     - nixpkgs-fmt - nix linter
-- Github releasing ([release action](
+- Manually releasing a new version ([release action](
 <https://{{REMOTE}}/{{OWNER}}/{{REPOSITORY}}/actions/workflows/Release.yml>)

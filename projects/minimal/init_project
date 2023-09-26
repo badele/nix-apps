@@ -34,5 +34,11 @@ replace_content flake.nix
 rm init_project
 
 # Add template file to new project
-git init && git add -A
+git init -b main && git add -A
+
+echo ""
+echo "Push your project with below commands :"
+echo "git remote add origin git@${REMOTE}:${OWNER}/${REPOSITORY}.git"
+echo "git commit -m 'feat: init project'"
+echo "git push -u origin main"
 
