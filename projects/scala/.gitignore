@@ -1,0 +1,18 @@
+.direnv
+
+# bloop and metals
+.bloop
+.bsp
+.metals
+project/metals.sbt
+
+# scala 3
+.tasty
+
+# sbt
+project/project/
+project/target/
+target/
+
+# general
+*.class

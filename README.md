@@ -34,7 +34,7 @@ curl -sfL https://direnv.net/install.sh | bash
 <https://github.com/badele/test/settings/actions>)
 
 ```shell
-nix flake new -t "github:badele/nix-appsminimal" your-project-name
+nix flake new -t "github:badele/nix-apps#minimal" your-project-name
 cd your-project-name
 sh init_project
 nix develop
@@ -42,9 +42,10 @@ nix develop
 
 ### Project
 
-Project | Description
---- | ---
-[minimal](projects/minimal) | Minimal CI project
+| Project                     | Description        |
+| --------------------------- | ------------------ |
+| [minimal](projects/minimal) | minimal CI project |
+| [scala](projects/scala)     | scala CI project   |
 
 ## Apps
 
@@ -60,9 +61,9 @@ nix develop --impure  --no-write-lock-file github:badele/nix-apps#<appname> -c $
 
 ### Packages
 
-APP Name | Description
---- | ---
-[cc2531](apps/2531) | zigbee CC2531 Texas Instruments USB stick flashing tool
-[network](apps/network) | Network monitoring and sniffing tools
-[sdr](apps/sdr) | Software Defined Radio(SDR)
-[system](apps/system) | System and performance tools
+| APP Name                | Description                                             |
+| ----------------------- | ------------------------------------------------------- |
+| [cc2531](apps/2531)     | zigbee CC2531 Texas Instruments USB stick flashing tool |
+| [network](apps/network) | Network monitoring and sniffing tools                   |
+| [sdr](apps/sdr)         | Software Defined Radio(SDR)                             |
+| [system](apps/system)   | System and performance tools                            |

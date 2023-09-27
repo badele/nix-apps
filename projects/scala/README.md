@@ -2,15 +2,20 @@
 
 ## TODO {{REPOSITORY}} project initialisation
 
-Enable **Read and write permissions** on the [Github action workflow permission](
+- Enable **Read and write permissions** on the [Github action workflow permission](
 <https://{{REMOTE}}/{{OWNER}}/{{REPOSITORY}}/settings/actions>)
 (for pushing the release and changelog)
+- Add CODECOV_TOKEN on the [secret project](
+<https://{{REMOTE}}/{{OWNER}}/{{REPOSITORY}}/secrets/actions>)
 
 ## Included with this project
 
 - nix/flake - reproducible, declarative and reliable developpement systems
-- pre-commit
+- pre-commit - verify commit before commit validation
 - cocogitto - conventional commits and auto versioning
+- sbt - scala build tool
+- sbt-scalafmt - lint the code
+- sbt-codecov - coverage code
 
 ## Git workflow
 
@@ -19,6 +24,7 @@ Enable **Read and write permissions** on the [Github action workflow permission]
   - pre-commit hook
     - markdownlint - markdown linter
     - nixpkgs-fmt - nix linter
+    - scalafmt - scala linter
 - github
   - CI
     - conventional commits

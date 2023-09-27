@@ -7,6 +7,10 @@
         path = ./projects/minimal;
         description = "minimal project";
       };
+      scala = {
+        path = ./projects/scala;
+        description = "scala project";
+      };
     };
   };
 
