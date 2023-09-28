@@ -11,8 +11,10 @@
         path = ./projects/scala;
         description = "scala project";
       };
+      deno = {
+        path = ./projects/deno;
+        description = "deno project";
+      };
     };
   };
-
-
 }

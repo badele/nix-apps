@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+replace_content() {
+sed -i "s/{{REMOTE}}/${REMOTE}/g" $1
+sed -i "s/{{OWNER}}/${OWNER}/g" $1
+sed -i "s/{{REPOSITORY}}/${REPOSITORY}/g" $1
+}
+
+###############################################################################
+# Inputs
+###############################################################################
+
+echo "https://github.com/badele/nix-apps"
+echo "           |         |       |"
+echo "         REMOTE    OWNER REPOSITORY"
+echo ""
+
+echo -n "Remote : "
+read -r REMOTE
+
+echo -n "Owner : "
+read -r OWNER
+
+echo -n "Repository : "
+read -r REPOSITORY
+
+###############################################################################
+# Replacements
+###############################################################################
+replace_content cog.toml
+replace_content README.md
+replace_content flake.nix
+
+rm init_project
+
+# Add template file to new project
+git init -b main && git add -A
+
+echo ""
+echo "Push your project with below commands :"
+echo "git remote add origin git@${REMOTE}:${OWNER}/${REPOSITORY}.git"
+echo "git commit -m 'feat: init project'"
+echo "git push -u origin main"
+

@@ -42,10 +42,11 @@ nix develop
 
 ### Project
 
-| Project                     | Description        |
-| --------------------------- | ------------------ |
-| [minimal](projects/minimal) | minimal CI project |
-| [scala](projects/scala)     | scala CI project   |
+| Project                         | Description            |
+| ---------------------------     | ------------------     |
+| [deno](projects/deno)           | deno CI project        |
+| [**minimal**](projects/minimal) | **minimal CI project** |
+| [scala](projects/scala)         | scala CI project       |
 
 ## Apps
 
