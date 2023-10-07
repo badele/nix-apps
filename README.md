@@ -1,52 +1,20 @@
 # nix-apps
 
-<!--toc:start-->
-- [nix-apps](#nix-apps)
-  - [Nix installation](#nix-installation)
-  - [Project initialisation](#project-initialisation)
-    - [Github](#github)
-  - [Apps](#apps)
-    - [Packages](#packages)
-<!--toc:end-->
-
 ## Nix installation
 
 Before using this project and if you not have the Nix/NixOS, your must install it
 
 Below command install `nix` and `flake` tool
 
-```bash
-# linux: sh <(curl -L https://nixos.org/nix/install) --daemon
-# macos: sh <(curl -L https://nixos.org/nix/install)
+```shell
+# linux/windows
+sh <(curl -L https://nixos.org/nix/install) --daemon
 grep 'experimental-features' /etc/nix/nix.conf || (echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf)
 
-# [Optional] direnv (load and unload environment variables depending on the current directory)
-curl -sfL https://direnv.net/install.sh | bash
+# macos 
+sh <(curl -L https://nixos.org/nix/install)
+grep 'experimental-features' /etc/nix/nix.conf || (echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf)
 ```
-
-## Project initialisation
-
-### Github
-
-- From github website, create repository (without enabled
-"Initialize this repository with")
-- Enable **Read and write permissions** on the [Workflow permission section](
-<https://github.com/badele/test/settings/actions>)
-
-```shell
-nix flake new -t "github:badele/nix-apps#minimal" your-project-name
-cd your-project-name
-sh init_project
-nix develop
-```
-
-### Project
-
-| Project                         | Description            |
-| ---------------------------     | ------------------     |
-| [deno](projects/deno)           | deno CI project        |
-| [**minimal**](projects/minimal) | **minimal CI project** |
-| [scala](projects/scala)         | scala CI project       |
 
 ## Apps
 
