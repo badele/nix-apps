@@ -14,5 +14,3 @@ jobs:
 
       - name: Conventional commits check
         uses: oknozor/cocogitto-action@v3
-      - name: test
-        run: deno test

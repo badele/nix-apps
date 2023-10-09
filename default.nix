@@ -3,4 +3,5 @@
   network = import ./apps/network/shell.nix { inherit pkgs; };
   sdr = import ./apps/sdr/shell.nix { inherit pkgs; };
   system = import ./apps/system/shell.nix { inherit pkgs; };
+  default = import ./apps/devenv/shell.nix { inherit pkgs; };
 }
